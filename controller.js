@@ -31,17 +31,21 @@ exports.tampilberdasarkanid = function (req, res) {
     });
 };
 
+
 //menambahkan data mahasiswa
 exports.tambahMahasiswa = function (req, res) {
+    
     var nim = req.body.nim;
     var nama = req.body.nama;
     var jurusan = req.body.jurusan;
+
+    console.log(nim)
 
     connection.query('INSERT INTO mahasiswa (nim,nama,jurusan) VALUES(?,?,?)',
         [nim, nama, jurusan],
         function (error, rows, fields) {
             if (error) {
-                console.log(error);
+                console.log("error:",error);
             } else {
                 response.ok("Berhasil Menambahkan Data!", res)
             }
